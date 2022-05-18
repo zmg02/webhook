@@ -12,7 +12,7 @@ if (empty($requestBody)) {
 
 // Content type = application/json
 $content = json_decode($requestBody, true);
-
+var_dump($content);exit;
 // 验证 Webhooks 配置的 Secret，也可以不验证
 /*if (empty($content['password']) || $content['password'] != '123456') {
 	exit('password error');
