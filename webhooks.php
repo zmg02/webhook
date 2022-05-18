@@ -15,9 +15,9 @@ if (empty($requestBody)) {
 $content = json_decode($requestBody, true);
 
 // 验证 Webhooks 配置的 Secret，也可以不验证
-if (empty($content['password']) || $content['password'] != '123456') {
-    exit('password error');
-}
+// if (empty($content['password']) || $content['password'] != '123456') {
+//     exit('password error');
+// }
 
 
 // 判断需要下拉的分支上是否有提交，我们这里的分支名称为 main
