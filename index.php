@@ -13,6 +13,7 @@ echo "<br/>webhook 测试5！——ok！";
 echo "<br/>webhook 测试6！——分支！";
 echo "<br/>webhook 测试7！print";
 echo "<br/>webhook 测试8！secret";
+echo "<br/>webhook 测试88！secret";
 
 echo '<br/>测试：输出项目路径和用户目录：<br/>';
 
