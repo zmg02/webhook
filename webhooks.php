@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Git webhooks 自动部署脚本
- * 地址：https://github.com/fuzhengwei/guide-webhooks/settings/hooks
+ * 地址：https://github.com/zmg02/webhook/settings/hooks/358733248?tab=settings
  */
 
 // 接收post参数
@@ -12,17 +13,17 @@ if (empty($requestBody)) {
 
 // Content type = application/json
 $content = json_decode($requestBody, true);
-var_dump($content);exit;
-// 验证 Webhooks 配置的 Secret，也可以不验证
-/*if (empty($content['password']) || $content['password'] != '123456') {
-	exit('password error');
-}*/
 
-// 项目存放物理路径，也就是站点的访问地址
-$path = "/www/wwwroot/webhook.91haoxue.top/webhook/";
+// 验证 Webhooks 配置的 Secret，也可以不验证
+if (empty($content['password']) || $content['password'] != '123456') {
+    exit('password error');
+}
+
 
 // 判断需要下拉的分支上是否有提交，我们这里的分支名称为 main
 if ($content['ref'] == 'refs/heads/main') {
+    // 项目存放物理路径，也就是站点的访问地址
+    $path = "/www/wwwroot/webhook.91haoxue.top/webhook/";
 
     // 执行脚本 git pull，拉取分支最新代码
     $res = shell_exec("cd {$path} && git pull origin main 2>&1"); // 当前为www用户
@@ -36,4 +37,3 @@ if ($content['ref'] == 'refs/heads/main') {
     file_put_contents("git_webhook_log.txt", $res_log, FILE_APPEND);
 }
 echo 'done';
-
